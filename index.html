@@ -1,613 +1,684 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio - Designer Gráfico</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Designer Gráfico</title>
+    <link rel="stylesheet" href="public/output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
+    />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #C47E3C;
-            --secondary-color: #1C1C1C;
-            --text-color: #F5F5F5;
-            --neutral-highlight: #E2E2E2;
-            --background-dark: #0A0A0A;
-            --card-background: #252525;
-        }
-
-        body, html {
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 8px;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            box-sizing: border-box;
-        }
-
-        .about-text p, .portfolio-info p, .contact-item p {
-            word-break: break-word;
-            overflow-wrap: break-word;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--background-dark) 100%);
-        }
-
-        .hero-content {
-            text-align: center;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            font-weight: 600;
-            background: linear-gradient(45deg, var(--text-color), var(--primary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 0.1em;
-        }
-
-        /* About Section */
-        .about {
-            padding: 100px 0;
-            background: var(--background-dark);
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--primary-color);
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: var(--neutral-highlight);
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-
-        .skills {
-            gap: 0.4rem;
-            margin-top: 1rem;
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-
-        .skill-tag {
-            font-size: 0.75rem;
-            padding: 5px 10px;
-            color: var(--primary-color);
-            background: var(--card-background);
-            border: 1px solid var(--primary-color);
-            border-radius: 25px;
-        }
-
-        /* Portfolio Section */
-        .portfolio {
-            padding-top: 32px;
-            padding-bottom: 60px;
-            background: var(--secondary-color);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .portfolio-item {
-            background: var(--card-background);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .portfolio-image {
-            width: 100%;
-            height: 320px;
-            background-size: cover;
-            background-position: center center;
-            position: relative;
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(196, 126, 60, 0.8), rgba(28, 28, 28, 0.8));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-
-        .portfolio-info {
-            padding: 1.5rem;
-        }
-
-        .portfolio-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .portfolio-info p {
-            color: var(--neutral-highlight);
-            font-size: 0.9rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding-top: 40px;
-            padding-bottom: 40px;
-        }
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .contact-item {
-            min-height: 90px;
-            padding: 1rem 0.5rem;
-            background: var(--card-background);
-            border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.10);
-            transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border: 1.5px solid var(--primary-color);
-            color: var(--primary-color);
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .contact-item:hover {
-            background: var(--primary-color);
-            color: var(--secondary-color);
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: 0 8px 32px rgba(196,126,60,0.18);
-            border-color: var(--primary-color);
-        }
-
-        .contact-icon {
-            width: 20px;
-            height: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .contact-item h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 0.01em;
-            color: inherit;
-            margin: 0;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--secondary-color);
-            padding: 2rem 0;
-            text-align: center;
-            border-top: 1px solid var(--card-background);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-            .about-content, .portfolio-grid, .contact-info {
-                width: 100%;
-                margin: 0;
-            }
-            .portfolio-info h3, .portfolio-info p {
-                word-break: break-word;
-                overflow-wrap: break-word;
-            }
-            .hero {
-                height: 28vh;
-            }
-            .hero h1 {
-                font-size: 1.6rem;
-            }
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            .portfolio {
-                padding-top: 32px;
-                padding-bottom: 60px;
-            }
-            .about-text, .section-title {
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-            }
-            .section-title {
-                text-align: center !important;
-                margin-left: auto;
-                margin-right: auto;
-                margin-bottom: 1.2rem;
-            }
-            .about-text {
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-            }
-            .skills {
-                gap: 0.4rem;
-                margin-top: 1rem;
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-            .skill-tag {
-                font-size: 0.75rem;
-                padding: 5px 10px;
-                color: var(--primary-color);
-                background: var(--card-background);
-                border: 1px solid var(--primary-color);
-                border-radius: 25px;
-            }
-            .contact-info {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.5rem;
-                margin-top: 1rem;
-            }
-            .contact-item {
-                min-height: 70px;
-                padding: 0.5rem 0.2rem;
-                font-size: 0.9rem;
-            }
-            .contact-icon {
-                width: 20px;
-                height: 20px;
-                font-size: 0.9rem;
-                margin-bottom: 0.2rem;
-            }
-            .contact-item h3 {
-                font-size: 0.85rem;
-            }
-            .portfolio-image {
-                height: 320px;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .tool-tag {
-            background: var(--card-background);
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-            border-radius: 12px;
-            font-size: 0.75rem;
-            padding: 3px 10px;
-            display: inline-block;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-        }
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+          background-color: #1C1C1C;
+          color: #F5F5F5;
+          font-family: 'Inter', sans-serif;
+      }
+      .playfair {
+          font-family: 'Playfair Display', serif;
+      }
+      .hero-section {
+          background-image: linear-gradient(rgba(28, 28, 28, 0.7), rgba(28, 28, 28, 0.8)), url('https://i.imgur.com/IbrffKN.jpeg');
+          background-size: cover;
+          background-position: center 20%;
+      }
+      .portfolio-item:hover .portfolio-overlay {
+          opacity: 0.9;
+      }
+      .portfolio-item:hover .portfolio-content {
+          transform: translateY(0);
+          opacity: 1;
+      }
+      input, textarea {
+          background-color: #2A2A2A;
+          border: 1px solid #3A3A3A;
+          color: #F5F5F5;
+      }
+      input:focus, textarea:focus {
+          border-color: #C47E3C;
+          outline: none;
+      }
+      .accent-line {
+          width: 60px;
+          height: 3px;
+          background-color: #C47E3C;
+      }
+      
+      /* Garantir que a imagem apareça */
+      .about-image img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border: 2px solid red; /* Debug temporário */
+      }
+      
+      .about-image {
+          min-height: 0;
+      }
+      
+      /* Responsividade melhorada */
+      @media (max-width: 768px) {
+          .hero-section {
+              min-height: 100vh;
+              padding: 2rem 0;
+          }
+          .hero-section h1 {
+              font-size: 2.5rem !important;
+              line-height: 1.2 !important;
+          }
+          .hero-section p {
+              font-size: 1rem !important;
+              margin-bottom: 2rem !important;
+          }
+          .accent-line {
+              width: 40px;
+              height: 2px;
+          }
+          .container {
+              padding-left: 1rem;
+              padding-right: 1rem;
+          }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content fade-in-up">
-                <h1>PORTFÓLIO</h1>
-            </div>
+    <section class="hero-section min-h-screen flex flex-col items-end justify-end">
+      <div class="container mx-auto px-6 pb-10">
+        <div class="max-w-3xl mx-auto text-center">
+          <h1
+            class="playfair text-5xl md:text-6xl font-bold mb-6 text-[#F5F5F5]"
+          >
+            Design Gráfico
+          </h1>
+          <div class="accent-line mx-auto mb-8"></div>
+          <p class="text-[#E2E2E2] text-xl mb-10">
+            Transformando ideias em experiências visuais impactantes que
+            conectam marcas aos seus públicos
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#portfolio"
+              class="bg-primary text-[#F5F5F5] px-8 py-3 !rounded-button font-medium hover:bg-opacity-90 transition-all duration-300 whitespace-nowrap"
+              >Ver Portfólio</a
+            >
+            <a
+              href="#contato"
+              class="border-2 border-[#E2E2E2] text-[#E2E2E2] px-8 py-3 !rounded-button font-medium hover:border-primary hover:text-primary transition-all duration-300 whitespace-nowrap"
+              >Fale Comigo</a
+            >
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">Sobre Mim</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Unindo criatividade e tecnologia para criar marcas, sites e aplicativos que se destacam.</p>
-                    <p>Um profissional criativo especializado em design gráfico e desenvolvimento de aplicativos com mais de 8 anos de experiência trabalhando com clientes de diversos setores. Minha abordagem combina visão artística com expertise técnica para criar soluções que não apenas são bonitas, mas também entregam resultados.</p>
-                    <div class="skills">
-                        <span class="skill-tag">Identidade Visual</span>
-                        <span class="skill-tag">Design Editorial</span>
-                        <span class="skill-tag">Packaging</span>
-                        <span class="skill-tag">Web Design</span>
-                        <span class="skill-tag">Ilustração</span>
-                        <span class="skill-tag">Motion Graphics</span>
-                    </div>
-                </div>
-                <div class="about-image">
-                    <div style="width: 100%; height: 400px; background: url('assets/sobre-mim.jpg') top center/cover no-repeat; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); background-color: var(--card-background);"></div>
-                </div>
+    <section id="sobre" class="py-12 md:py-20 bg-[#1A1A1A]">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-center">
+          <div class="md:w-1/2">
+            <div class="relative about-image">
+              <!-- Elemento decorativo removido -->
             </div>
+          </div>
+          <div class="md:w-1/2">
+            <h2 class="playfair text-3xl md:text-4xl font-bold mb-4 md:mb-6">Sobre Mim</h2>
+            <div class="accent-line mb-6 md:mb-8"></div>
+            <p class="text-[#E2E2E2] mb-4 md:mb-6 text-sm md:text-base">
+              Com mais de 8 anos de experiência em design gráfico, minha paixão
+              está em criar identidades visuais que comunicam a essência de cada
+              marca. Meu processo criativo combina pesquisa aprofundada,
+              pensamento estratégico e execução meticulosa.
+            </p>
+            <p class="text-[#E2E2E2] mb-6 md:mb-8 text-sm md:text-base">
+              Formado em Design Gráfico pela Universidade Federal do Rio de
+              Janeiro, tenho especialização em Branding e Marketing Digital.
+              Trabalhei com clientes de diversos setores, desde startups até
+              grandes corporações.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <span
+                class="px-4 py-2 bg-[#2A2A2A] text-[#E2E2E2] rounded-full text-sm"
+                >Identidade Visual</span
+              >
+              <span
+                class="px-4 py-2 bg-[#2A2A2A] text-[#E2E2E2] rounded-full text-sm"
+                >UI/UX Design</span
+              >
+              <span
+                class="px-4 py-2 bg-[#2A2A2A] text-[#E2E2E2] rounded-full text-sm"
+                >Tipografia</span
+              >
+              <span
+                class="px-4 py-2 bg-[#2A2A2A] text-[#E2E2E2] rounded-full text-sm"
+                >Ilustração</span
+              >
+              <span
+                class="px-4 py-2 bg-[#2A2A2A] text-[#E2E2E2] rounded-full text-sm"
+                >Motion Graphics</span
+              >
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Modal de Projeto -->
-    <div id="modal-projeto" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:2000; align-items:center; justify-content:center;">
-        <div style="background:var(--card-background); border-radius:15px; max-width:600px; width:90vw; padding:2rem; position:relative; box-shadow:0 10px 40px rgba(0,0,0,0.5); color:var(--text-color);">
-            <button id="fechar-modal" style="position:absolute; top:15px; right:20px; background:none; border:none; color:var(--primary-color); font-size:2rem; cursor:pointer;">&times;</button>
-            <img id="modal-img" src="" alt="Projeto" style="width:100%; border-radius:10px; margin-bottom:1.5rem; max-height:300px; object-fit:contain; background:var(--background-dark); display:block; margin-left:auto; margin-right:auto;">
-            <h3 id="modal-titulo" style="color:var(--primary-color); margin-bottom:1rem;"></h3>
-            <p id="modal-desc" style="color:var(--neutral-highlight);"></p>
+    <!-- Specialties Section -->
+    <section id="especialidades" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="playfair text-4xl font-bold mb-6">Especialidades</h2>
+          <div class="accent-line mx-auto mb-8"></div>
+          <p class="text-[#E2E2E2] max-w-2xl mx-auto">
+            Ofereço soluções completas de design gráfico para elevar sua marca e
+            comunicação visual ao próximo nível
+          </p>
         </div>
-    </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-[#222222] p-8 rounded-lg border-b-2 border-primary hover:translate-y-[-8px] transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-lg mb-6"
+            >
+              <i class="ri-palette-line ri-xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Identidade Visual</h3>
+            <p class="text-[#E2E2E2]">
+              Desenvolvimento de logos, sistemas de identidade visual e guias de
+              estilo que capturam a essência da sua marca e criam reconhecimento
+              instantâneo.
+            </p>
+          </div>
+
+          <div
+            class="bg-[#222222] p-8 rounded-lg border-b-2 border-primary hover:translate-y-[-8px] transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-lg mb-6"
+            >
+              <i class="ri-layout-4-line ri-xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Design Editorial</h3>
+            <p class="text-[#E2E2E2]">
+              Criação de layouts para revistas, livros, catálogos e relatórios
+              que combinam estética e funcionalidade para uma experiência de
+              leitura envolvente.
+            </p>
+          </div>
+
+          <div
+            class="bg-[#222222] p-8 rounded-lg border-b-2 border-primary hover:translate-y-[-8px] transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-lg mb-6"
+            >
+              <i class="ri-computer-line ri-xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">UI/UX Design</h3>
+            <p class="text-[#E2E2E2]">
+              Design de interfaces digitais intuitivas e experiências de usuário
+              que equilibram beleza e usabilidade para websites e aplicativos.
+            </p>
+          </div>
+
+          <div
+            class="bg-[#222222] p-8 rounded-lg border-b-2 border-primary hover:translate-y-[-8px] transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-lg mb-6"
+            >
+              <i class="ri-image-line ri-xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Direção de Arte</h3>
+            <p class="text-[#E2E2E2]">
+              Supervisão criativa de projetos visuais, garantindo coerência e
+              qualidade em todos os elementos para campanhas e produções
+              visuais.
+            </p>
+          </div>
+
+          <div
+            class="bg-[#222222] p-8 rounded-lg border-b-2 border-primary hover:translate-y-[-8px] transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-lg mb-6"
+            >
+              <i class="ri-movie-line ri-xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Motion Graphics</h3>
+            <p class="text-[#E2E2E2]">
+              Animações e efeitos visuais que dão vida às suas ideias, perfeitos
+              para vídeos promocionais, apresentações e conteúdo para redes
+              sociais.
+            </p>
+          </div>
+
+          <div
+            class="bg-[#222222] p-8 rounded-lg border-b-2 border-primary hover:translate-y-[-8px] transition-all duration-300"
+          >
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-lg mb-6"
+            >
+              <i class="ri-pen-nib-line ri-xl text-primary"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Ilustração</h3>
+            <p class="text-[#E2E2E2]">
+              Criação de ilustrações personalizadas que comunicam conceitos
+              complexos de forma visual e memorável para diversos meios e
+              propósitos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2 class="section-title">Meus Trabalhos</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item" data-img="https://i.imgur.com/1O9rk4s.jpeg" data-titulo="Igreja Aos Pés do Abba" data-desc="Visão Geral do Projeto\nUm projeto de identidade visual abrangente para a Igreja Aos Pés do Abba, uma igreja que tem levado a sério esse ministério. O design incorpora a missão de consciência espiritual da igreja, mantendo uma estética moderna e limpa.">
-                    <div class="portfolio-image" style="background-image: url('https://i.imgur.com/1O9rk4s.jpeg');">
-                        <div class="portfolio-overlay">
-                            <button class="abrir-modal" style="background:none; border:none; color:white; font-weight:bold; font-size:1rem; cursor:pointer;">Ver Projeto</button>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Igreja Aos Pés do Abba</h3>
-                        <p>Visão Geral do Projeto<br>Um projeto de identidade visual abrangente para a Igreja Aos Pés do Abba, uma igreja que tem levado a sério esse ministério. O design incorpora a missão de consciência espiritual da igreja, mantendo uma estética moderna e limpa.</p>
-                        <div class="tools" style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <span class="tool-tag">Adobe Illustrator</span>
-                            <span class="tool-tag">Adobe Photoshop</span>
-                            <span class="tool-tag">Figma</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-img="https://i.imgur.com/LRaUe4m.jpeg" data-titulo="Candinho Wop" data-desc="Uma identidade visual moderna e sofisticada para a Candinho Wop, uma empresa especializada focada em cosméticos de alta qualidade. O branding inclui design de logo, embalagens, layouts de menu e materiais promocionais.">
-                    <div class="portfolio-image" style="background-image: url('https://i.imgur.com/LRaUe4m.jpeg');">
-                        <div class="portfolio-overlay">
-                            <button class="abrir-modal" style="background:none; border:none; color:white; font-weight:bold; font-size:1rem; cursor:pointer;">Ver Projeto</button>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Candinho Wop</h3>
-                        <p>Uma identidade visual moderna e sofisticada para a Candinho Wop, uma empresa especializada focada em cosméticos de alta qualidade. O branding inclui design de logo, embalagens, layouts de menu e materiais promocionais.</p>
-                        <div class="tools" style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <span class="tool-tag">Adobe Illustrator</span>
-                            <span class="tool-tag">Adobe Photoshop</span>
-                            <span class="tool-tag">Figma</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-img="https://i.imgur.com/yjzhhLE.jpeg" data-titulo="Aos Pés do Abba" data-desc="Um design de um totem visualmente envolvente para uma igreja líder em servir. O totem combina visualização de informação, fotografia e tipografia para comunicar efetivamente a conferência da igreja.">
-                    <div class="portfolio-image" style="background-image: url('https://i.imgur.com/yjzhhLE.jpeg');">
-                        <div class="portfolio-overlay">
-                            <button class="abrir-modal" style="background:none; border:none; color:white; font-weight:bold; font-size:1rem; cursor:pointer;">Ver Projeto</button>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Aos Pés do Abba</h3>
-                        <p>Um design de um totem visualmente envolvente para uma igreja líder em servir. O totem combina visualização de informação, fotografia e tipografia para comunicar efetivamente a conferência da igreja.</p>
-                        <div class="tools" style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <span class="tool-tag">Adobe Illustrator</span>
-                            <span class="tool-tag">Adobe Photoshop</span>
-                            <span class="tool-tag">Figma</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-img="https://i.imgur.com/dj5raWH.png" data-titulo="Oficina Pontual" data-desc="trabalho para um cliente dono de uma oficina, post de redes sociais.">
-                    <div class="portfolio-image" style="background-image: url('https://i.imgur.com/dj5raWH.png');">
-                        <div class="portfolio-overlay">
-                            <button class="abrir-modal" style="background:none; border:none; color:white; font-weight:bold; font-size:1rem; cursor:pointer;">Ver Projeto</button>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Oficina Pontual</h3>
-                        <p>trabalho para um cliente dono de uma oficina, post de redes sociais.</p>
-                        <div class="tools" style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <span class="tool-tag">Adobe Illustrator</span>
-                            <span class="tool-tag">Adobe Photoshop</span>
-                            <span class="tool-tag">Figma</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-img="https://i.imgur.com/uHiUlqt.png" data-titulo="BC Financeira" data-desc="Arte para redes sociais feito para uma empresa de crédito consignados">
-                    <div class="portfolio-image" style="background-image: url('https://i.imgur.com/uHiUlqt.png');">
-                        <div class="portfolio-overlay">
-                            <button class="abrir-modal" style="background:none; border:none; color:white; font-weight:bold; font-size:1rem; cursor:pointer;">Ver Projeto</button>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>BC Financeira</h3>
-                        <p>Arte para redes sociais feito para uma empresa de crédito consignados</p>
-                        <div class="tools" style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <span class="tool-tag">Adobe Illustrator</span>
-                            <span class="tool-tag">Adobe Photoshop</span>
-                            <span class="tool-tag">Figma</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item" data-img="https://i.imgur.com/sZxlumT.jpeg" data-titulo="Cantinho da Tapioca" data-desc="Arte para redes sociais feito para uma Tapiocaria">
-                    <div class="portfolio-image" style="background-image: url('https://i.imgur.com/sZxlumT.jpeg');">
-                        <div class="portfolio-overlay">
-                            <button class="abrir-modal" style="background:none; border:none; color:white; font-weight:bold; font-size:1rem; cursor:pointer;">Ver Projeto</button>
-                        </div>
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Cantinho da Tapioca</h3>
-                        <p>Arte para redes sociais feito para uma Tapiocaria</p>
-                        <div class="tools" style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                            <span class="tool-tag">Adobe Illustrator</span>
-                            <span class="tool-tag">Adobe Photoshop</span>
-                            <span class="tool-tag">Figma</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section id="portfolio" class="py-20 bg-[#1A1A1A]">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="playfair text-4xl font-bold mb-6">Portfólio</h2>
+          <div class="accent-line mx-auto mb-8"></div>
+          <p class="text-[#E2E2E2] max-w-2xl mx-auto">
+            Uma seleção de alguns dos meus trabalhos em design gráfico e
+            comunicação visual
+          </p>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
+          <!-- Portfolio Item 1 -->
+          <div class="portfolio-item relative rounded-lg overflow-hidden group">
+            <img
+              src="https://i.imgur.com/1O9rk4s.jpeg"
+              alt="Projeto de Branding"
+              class="w-full h-[350px] object-cover object-top"
+            />
+          </div>
+
+          <!-- Portfolio Item 2 -->
+          <div class="portfolio-item relative rounded-lg overflow-hidden group">
+            <img
+              src="https://i.imgur.com/yjzhhLE.jpeg"
+              alt="Design de Website"
+              class="w-full h-[350px] object-cover object-top"
+              style="object-position: center 30%;"
+            />
+          </div>
+
+          <!-- Portfolio Item 3 -->
+          <div class="portfolio-item relative rounded-lg overflow-hidden group">
+            <img
+              src="https://i.imgur.com/dIWUlM7.png"
+              alt="Design Editorial"
+              class="w-full h-[350px] object-cover object-top"
+              style="object-position: center 25%;"
+            />
+          </div>
+
+          <!-- Portfolio Item 4 -->
+          <div class="portfolio-item relative rounded-lg overflow-hidden group">
+            <img
+              src="https://i.imgur.com/okIeAkU.jpeg"
+              alt="UI/UX Design"
+              class="w-full h-[350px] object-cover object-top"
+            />
+          </div>
+
+          <!-- Portfolio Item 5 -->
+          <div class="portfolio-item relative rounded-lg overflow-hidden group">
+            <img
+              src="https://i.imgur.com/K0SMm3e.png"
+              alt="Design de Embalagem"
+              class="w-full h-[350px] object-cover object-top"
+            />
+          </div>
+
+          <!-- Portfolio Item 6 -->
+          <div class="portfolio-item relative rounded-lg overflow-hidden group">
+            <img
+              src="https://i.imgur.com/M4FGlWA.jpeg"
+              alt="Design de Poster"
+              class="w-full h-[350px] object-cover object-top"
+            />
+          </div>
+
+          <!-- Portfolio Item 7 (Hidden by default) -->
+          <div class="portfolio-item relative rounded-lg overflow-hidden group hidden" id="portfolio-7">
+            <img
+              src="https://i.imgur.com/RTXLjPk.jpeg"
+              alt="Projeto Adicional 1"
+              class="w-full h-[350px] object-cover object-top"
+            />
+          </div>
+
+          <!-- Portfolio Item 8 (Hidden by default) -->
+          <div class="portfolio-item relative rounded-lg overflow-hidden group hidden" id="portfolio-8">
+            <img
+              src="https://i.imgur.com/EyvFCCF.jpeg"
+              alt="Projeto Adicional 2"
+              class="w-full h-[350px] object-cover object-top"
+            />
+          </div>
+
+          <!-- Portfolio Item 9 (Hidden by default) -->
+          <div class="portfolio-item relative rounded-lg overflow-hidden group hidden" id="portfolio-9">
+            <img
+              src="https://i.imgur.com/CZJRuBG.jpeg"
+              alt="Projeto Adicional 3"
+              class="w-full h-[350px] object-cover object-top"
+            />
+          </div>
+
+          <!-- Portfolio Item 10 (Hidden by default) -->
+          <div class="portfolio-item relative rounded-lg overflow-hidden group hidden" id="portfolio-10">
+            <img
+              src="https://i.imgur.com/07GHkfS.png"
+              alt="Projeto Adicional 4"
+              class="w-full h-[350px] object-cover object-top"
+            />
+          </div>
+
+          <!-- Portfolio Item 11 (Hidden by default) -->
+          <div class="portfolio-item relative rounded-lg overflow-hidden group hidden" id="portfolio-11">
+            <img
+              src="https://i.imgur.com/z01BApB.png"
+              alt="Projeto Adicional 5"
+              class="w-full h-[350px] object-cover object-top"
+            />
+          </div>
+
+          <!-- Portfolio Item 12 (Hidden by default) -->
+          <div class="portfolio-item relative rounded-lg overflow-hidden group hidden" id="portfolio-12">
+            <img
+              src="https://i.imgur.com/2PxpOZl.jpeg"
+              alt="Projeto Adicional 6"
+              class="w-full h-[350px] object-cover object-top"
+            />
+          </div>
+        </div>
+
+        <div class="text-center mt-12">
+          <a
+            href="#"
+            id="ver-mais-btn"
+            class="inline-block border-2 border-primary text-primary px-8 py-3 !rounded-button font-medium hover:bg-primary hover:text-[#F5F5F5] transition-all duration-300 whitespace-nowrap"
+            >Ver Mais Projetos</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="playfair text-4xl font-bold mb-6">Meu Processo</h2>
+          <div class="accent-line mx-auto mb-8"></div>
+          <p class="text-[#E2E2E2] max-w-2xl mx-auto">
+            Uma abordagem metódica e colaborativa para transformar suas ideias
+            em soluções visuais eficazes
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div class="bg-[#222222] p-8 rounded-lg relative">
+            <div
+              class="absolute -top-5 -left-5 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-xl font-bold"
+            >
+              1
+            </div>
+            <h3 class="text-xl font-semibold mb-4 mt-4">Descoberta</h3>
+            <p class="text-[#E2E2E2]">
+              Entendimento profundo do seu negócio, público-alvo e objetivos
+              através de pesquisa e entrevistas detalhadas.
+            </p>
+          </div>
+
+          <div class="bg-[#222222] p-8 rounded-lg relative">
+            <div
+              class="absolute -top-5 -left-5 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-xl font-bold"
+            >
+              2
+            </div>
+            <h3 class="text-xl font-semibold mb-4 mt-4">Estratégia</h3>
+            <p class="text-[#E2E2E2]">
+              Desenvolvimento de conceitos e direções criativas alinhadas com
+              seus objetivos de negócio e posicionamento de marca.
+            </p>
+          </div>
+
+          <div class="bg-[#222222] p-8 rounded-lg relative">
+            <div
+              class="absolute -top-5 -left-5 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-xl font-bold"
+            >
+              3
+            </div>
+            <h3 class="text-xl font-semibold mb-4 mt-4">Design</h3>
+            <p class="text-[#E2E2E2]">
+              Criação de soluções visuais que traduzem a estratégia em elementos
+              gráficos impactantes e memoráveis.
+            </p>
+          </div>
+
+          <div class="bg-[#222222] p-8 rounded-lg relative">
+            <div
+              class="absolute -top-5 -left-5 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-xl font-bold"
+            >
+              4
+            </div>
+            <h3 class="text-xl font-semibold mb-4 mt-4">Implementação</h3>
+            <p class="text-[#E2E2E2]">
+              Finalização e entrega dos arquivos em todos os formatos
+              necessários, com suporte para aplicação correta.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-[#1A1A1A]">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+          <h2 class="playfair text-4xl font-bold mb-6">Depoimentos</h2>
+          <div class="accent-line mx-auto mb-8"></div>
+          <p class="text-[#E2E2E2] max-w-2xl mx-auto">
+            O que meus clientes dizem sobre trabalhar comigo
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-[#222222] p-8 rounded-lg">
+            <div class="flex justify-center mb-6">
+              <i class="ri-double-quotes-l ri-3x text-primary opacity-30"></i>
+            </div>
+            <p class="text-[#E2E2E2] mb-8 text-center">
+              "O redesign da nossa identidade visual superou todas as
+              expectativas. O processo foi colaborativo e o resultado final
+              capturou perfeitamente a essência da nossa marca."
+            </p>
+            <div class="flex flex-col items-center">
+              <h4 class="font-semibold">Mariana Oliveira</h4>
+              <p class="text-sm text-[#E2E2E2]">CEO, Estúdio Arquitetura</p>
+            </div>
+          </div>
+
+          <div class="bg-[#222222] p-8 rounded-lg">
+            <div class="flex justify-center mb-6">
+              <i class="ri-double-quotes-l ri-3x text-primary opacity-30"></i>
+            </div>
+            <p class="text-[#E2E2E2] mb-8 text-center">
+              "Trabalhamos juntos no design do nosso aplicativo e o resultado
+              foi incrível. A interface é intuitiva, bonita e nossos usuários
+              adoraram a experiência."
+            </p>
+            <div class="flex flex-col items-center">
+              <h4 class="font-semibold">Rafael Mendes</h4>
+              <p class="text-sm text-[#E2E2E2]">Fundador, FinTech Solutions</p>
+            </div>
+          </div>
+
+          <div class="bg-[#222222] p-8 rounded-lg">
+            <div class="flex justify-center mb-6">
+              <i class="ri-double-quotes-l ri-3x text-primary opacity-30"></i>
+            </div>
+            <p class="text-[#E2E2E2] mb-8 text-center">
+              "O design editorial para nossa revista trimestral elevou
+              completamente o nível da publicação. A atenção aos detalhes e a
+              criatividade são impressionantes."
+            </p>
+            <div class="flex flex-col items-center">
+              <h4 class="font-semibold">Camila Rodrigues</h4>
+              <p class="text-sm text-[#E2E2E2]">
+                Editora-Chefe, Revista Estilo
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Vamos Trabalhar Juntos?</h2>
-            
-            <div class="contact-info">
-                <a class="contact-item" href="mailto:enoquesanbor@gmail.com" style="text-decoration:none;" target="_blank">
-                    <div class="contact-icon">
-                        <!-- Ícone Email -->
-                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg>
-                    </div>
-                    <h3>Email</h3>
-                </a>
-                <a class="contact-item" href="https://wa.me/5598992162218" style="text-decoration:none;" target="_blank">
-                    <div class="contact-icon">
-                        <!-- Ícone Telefone -->
-                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3 5.18 2 2 0 0 1 5 3h2.09a2 2 0 0 1 2 1.72c.13.81.36 1.6.68 2.34a2 2 0 0 1-.45 2.11l-.27.27a16 16 0 0 0 6.29 6.29l.27-.27a2 2 0 0 1 2.11-.45c.74.32 1.53.55 2.34.68A2 2 0 0 1 22 16.92z"/></svg>
-                    </div>
-                    <h3>WhatsApp</h3>
-                </a>
-                <a class="contact-item" href="https://www.linkedin.com/in/sanches-borges-621873b0/" style="text-decoration:none;" target="_blank">
-                    <div class="contact-icon">
-                        <!-- Ícone LinkedIn -->
-                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><line x1="16" y1="11" x2="16" y2="16"/><line x1="12" y1="11" x2="12" y2="16"/><line x1="8" y1="11" x2="8" y2="16"/><circle cx="8" cy="8" r="1"/></svg>
-                    </div>
-                    <h3>LinkedIn</h3>
-                </a>
+    <section id="contato" class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="max-w-2xl mx-auto text-center">
+          <h2 class="playfair text-4xl font-bold mb-6">
+            Vamos Trabalhar Juntos
+          </h2>
+          <div class="accent-line mx-auto mb-8"></div>
+          <p class="text-[#E2E2E2] mb-8">
+            Estou disponível para projetos de design gráfico, branding e
+            UI/UX. Entre em contato para discutirmos como posso ajudar a
+            elevar sua comunicação visual.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-6 justify-center mb-8">
+            <div class="flex items-center gap-4">
+              <a
+                href="mailto:enoquesanbor@gmail.com"
+                class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-10 rounded-full hover:bg-primary hover:text-[#F5F5F5] transition-colors duration-300"
+              >
+                <i class="ri-mail-line ri-lg text-primary"></i>
+              </a>
+              <div>
+                <h4 class="font-semibold">Email</h4>
+              </div>
             </div>
+
+            <div class="flex items-center gap-4">
+              <a
+                href="https://wa.me/5598992162218"
+                target="_blank"
+                class="w-12 h-12 flex items-center justify-center bg-primary bg-opacity-10 rounded-full hover:bg-primary hover:text-[#F5F5F5] transition-colors duration-300"
+              >
+                <i class="ri-whatsapp-line ri-lg text-primary"></i>
+              </a>
+              <div>
+                <h4 class="font-semibold">WhatsApp</h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-4 justify-center">
+            <a
+              href="https://www.instagram.com/sanchesborgesdesigner/"
+              target="_blank"
+              class="w-10 h-10 flex items-center justify-center bg-[#222222] rounded-full hover:bg-primary transition-colors duration-300"
+            >
+              <i class="ri-instagram-line"></i>
+            </a>
+            <a
+              href="https://github.com/Sanchesborger"
+              target="_blank"
+              class="w-10 h-10 flex items-center justify-center bg-[#222222] rounded-full hover:bg-primary transition-colors duration-300"
+            >
+              <i class="ri-github-line"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/sanches-borges-621873b0/"
+              target="_blank"
+              class="w-10 h-10 flex items-center justify-center bg-[#222222] rounded-full hover:bg-primary transition-colors duration-300"
+            >
+              <i class="ri-linkedin-line"></i>
+            </a>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Sanches Borges. Todos os direitos reservados.</p>
+    <footer class="py-8 bg-[#151515]">
+      <div class="container mx-auto px-6">
+        <div class="text-center">
+          <p class="text-[#E2E2E2] text-sm">
+            © 2025 Sanches Borges. Todos os direitos reservados.
+          </p>
         </div>
+      </div>
     </footer>
 
-    <script type="module">
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+    <!-- Smooth Scroll -->
+    <script id="smoothScrollScript">
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
 
-        // Observe portfolio items for staggered animation
-        document.querySelectorAll('.portfolio-item').forEach((item, index) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(30px)';
-            item.style.transition = `all 0.6s ease ${index * 0.1}s`;
-            observer.observe(item);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: "smooth",
+              });
+            }
+          });
         });
-
-        // Observe contact items
-        document.querySelectorAll('.contact-item').forEach((item, index) => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(30px)';
-            item.style.transition = `all 0.6s ease ${index * 0.1}s`;
-            observer.observe(item);
-        });
-
-        // Modal de Projeto
-        const modal = document.getElementById('modal-projeto');
-        const modalImg = document.getElementById('modal-img');
-        const modalTitulo = document.getElementById('modal-titulo');
-        const modalDesc = document.getElementById('modal-desc');
-        const fecharModal = document.getElementById('fechar-modal');
-        document.querySelectorAll('.abrir-modal').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                const item = btn.closest('.portfolio-item');
-                modalImg.src = item.getAttribute('data-img');
-                modalTitulo.textContent = item.getAttribute('data-titulo');
-                modalDesc.textContent = item.getAttribute('data-desc');
-                modal.style.display = 'flex';
-            });
-        });
-        fecharModal.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) modal.style.display = 'none';
-        });
+      });
     </script>
-</body>
+
+    <!-- Portfolio Script -->
+    <script id="portfolioScript">
+      document.addEventListener("DOMContentLoaded", function () {
+        const verMaisBtn = document.getElementById("ver-mais-btn");
+        const hiddenItems = document.querySelectorAll("#portfolio-7, #portfolio-8, #portfolio-9, #portfolio-10, #portfolio-11, #portfolio-12");
+        let showingMore = false;
+
+        verMaisBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          if (!showingMore) {
+            // Mostrar os 6 cards adicionais
+            hiddenItems.forEach((item) => {
+              item.classList.remove("hidden");
+            });
+            verMaisBtn.textContent = "Ver Menos Projetos";
+            showingMore = true;
+          } else {
+            // Esconder os 6 cards adicionais
+            hiddenItems.forEach((item) => {
+              item.classList.add("hidden");
+            });
+            verMaisBtn.textContent = "Ver Mais Projetos";
+            showingMore = false;
+          }
+        });
+      });
+    </script>
+  </body>
 </html> 

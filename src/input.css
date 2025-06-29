@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+    background-color: #1C1C1C;
+    color: #F5F5F5;
+    font-family: 'Inter', sans-serif;
+}
+.playfair {
+    font-family: 'Playfair Display', serif;
+}
+.hero-section {
+    background-image: linear-gradient(rgba(28, 28, 28, 0.7), rgba(28, 28, 28, 0.8)), url('https://i.imgur.com/IbrffKN.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+.portfolio-item:hover .portfolio-overlay {
+    opacity: 0.9;
+}
+.portfolio-item:hover .portfolio-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+input, textarea {
+    background-color: #2A2A2A;
+    border: 1px solid #3A3A3A;
+    color: #F5F5F5;
+}
+input:focus, textarea:focus {
+    border-color: #C47E3C;
+    outline: none;
+}
+.accent-line {
+    width: 60px;
+    height: 3px;
+    background-color: #C47E3C;
+} 

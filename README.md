@@ -1,116 +1,111 @@
 # Portfolio Designer Gráfico
 
-Um site de portfolio moderno e responsivo para designers gráficos, desenvolvido com HTML, CSS e JavaScript puro.
+Um portfólio profissional e moderno para designers gráficos, construído com HTML, Tailwind CSS e JavaScript.
 
-## 🎨 Características
+## 🚀 Características
 
-- **Design Moderno**: Interface elegante com gradientes e efeitos visuais
-- **Totalmente Responsivo**: Adaptável a todos os dispositivos
-- **Animações Suaves**: Transições e efeitos de scroll
-- **Navegação Intuitiva**: Menu fixo com scroll suave
-- **Seções Organizadas**: Hero, Sobre, Portfólio e Contato
+- **Design Responsivo**: Otimizado para desktop, tablet e mobile
+- **Performance Otimizada**: Tailwind CSS local com build otimizado
+- **Animações Suaves**: Transições e efeitos visuais elegantes
+- **SEO Friendly**: Estrutura semântica e meta tags otimizadas
+- **Acessibilidade**: Navegação por teclado e leitores de tela
 
-## 🚀 Como Usar
+## 🛠️ Tecnologias
 
-1. **Visualizar o Site**:
-   - Abra o arquivo `index.html` em qualquer navegador moderno
-   - Ou use um servidor local para melhor experiência
+- HTML5
+- Tailwind CSS 3.4
+- JavaScript (Vanilla)
+- Express.js (servidor local)
+- Remix Icons
 
-2. **Personalizar**:
-   - Edite as cores no arquivo CSS (variáveis CSS no `:root`)
-   - Substitua as imagens por suas próprias
-   - Atualize os textos e informações de contato
+## 📦 Instalação
+
+1. **Clone o repositório:**
+   ```bash
+   git clone <url-do-repositorio>
+   cd portfoliodesigner
+   ```
+
+2. **Instale as dependências:**
+   ```bash
+   npm install
+   ```
+
+3. **Gere o CSS otimizado:**
+   ```bash
+   npm run build
+   ```
+
+4. **Inicie o servidor de desenvolvimento:**
+   ```bash
+   npm start
+   ```
+
+5. **Acesse o projeto:**
+   Abra http://localhost:3000 no seu navegador
+
+## 🔧 Scripts Disponíveis
+
+- `npm start` - Inicia o servidor de desenvolvimento
+- `npm run dev` - Alias para npm start
+- `npm run build` - Gera o CSS otimizado para produção
+- `npm run watch` - Monitora mudanças no CSS e recompila automaticamente
 
 ## 📁 Estrutura do Projeto
 
 ```
 portfoliodesigner/
-├── index.html          # Arquivo principal
-├── README.md           # Documentação
-└── assets/             # Pasta para imagens (opcional)
+├── src/
+│   └── input.css          # Arquivo CSS de entrada do Tailwind
+├── public/
+│   └── output.css         # CSS otimizado gerado
+├── assets/
+│   └── sobre-mim.jpg      # Imagens do projeto
+├── index.html             # Página principal
+├── server.js              # Servidor Express
+├── package.json           # Dependências e scripts
+├── tailwind.config.js     # Configuração do Tailwind
+├── postcss.config.js      # Configuração do PostCSS
+└── README.md              # Este arquivo
 ```
 
-## 🎯 Seções do Site
+## 🎨 Personalização
 
-### Hero Section
-- Foto de perfil profissional
-- Título e subtítulo
-- Botão call-to-action
+### Cores
+As cores principais estão definidas no `tailwind.config.js`:
+- **Primary**: #C47E3C (dourado)
+- **Secondary**: #1C1C1C (cinza escuro)
 
-### Sobre
-- Descrição pessoal
-- Habilidades técnicas
-- Imagem ilustrativa
-
-### Portfólio
-- Grid de projetos
-- Imagens com overlay
-- Descrições dos trabalhos
-
-### Contato
-- Informações de contato
-- Links para redes sociais
-- Dados profissionais
-
-## 🛠️ Tecnologias Utilizadas
-
-- **HTML5**: Estrutura semântica
-- **CSS3**: Estilização moderna com variáveis CSS
-- **JavaScript**: Interatividade e animações
-- **Google Fonts**: Tipografia Inter e Playfair Display
-
-## 🎨 Paleta de Cores
-
-- **Primária**: #C47E3C (Dourado)
-- **Secundária**: #1C1C1C (Cinza escuro)
-- **Texto**: #F5F5F5 (Branco)
-- **Destaque**: #E2E2E2 (Cinza claro)
-- **Fundo Escuro**: #0A0A0A (Preto)
+### Fontes
+- **Inter**: Para textos gerais
+- **Playfair Display**: Para títulos
+- **Pacifico**: Para o logo
 
 ## 📱 Responsividade
 
-O site é totalmente responsivo e se adapta a:
-- Desktop (1200px+)
-- Tablet (768px - 1199px)
-- Mobile (< 768px)
+O site é totalmente responsivo com breakpoints:
+- **Mobile**: < 768px
+- **Tablet**: 768px - 1024px
+- **Desktop**: > 1024px
 
-## 🔧 Personalização
+## 🚀 Deploy
 
-### Cores
-Edite as variáveis CSS no início do arquivo:
-```css
-:root {
-    --primary-color: #C47E3C;
-    --secondary-color: #1C1C1C;
-    /* ... outras cores */
-}
-```
+Para fazer deploy em produção:
 
-### Imagens
-Substitua as URLs das imagens do Unsplash por suas próprias imagens:
-- Foto de perfil na seção Hero
-- Imagem da seção Sobre
-- Imagens dos projetos no Portfólio
+1. Execute o build:
+   ```bash
+   npm run build
+   ```
 
-### Conteúdo
-Atualize:
-- Nome e título
-- Descrição pessoal
-- Projetos do portfólio
-- Informações de contato
-
-## 🌟 Recursos Avançados
-
-- **Scroll Suave**: Navegação entre seções
-- **Animações de Entrada**: Efeitos ao fazer scroll
-- **Header Dinâmico**: Muda de opacidade no scroll
-- **Hover Effects**: Interações nos elementos
-- **Intersection Observer**: Animações baseadas em visibilidade
+2. Faça upload dos arquivos:
+   - `index.html`
+   - `public/output.css`
+   - `assets/` (pasta com imagens)
 
 ## 📄 Licença
 
-Este projeto é de uso livre para fins pessoais e comerciais.
+Este projeto está sob a licença ISC.
 
----
+## 👨‍💻 Autor
 
-**Desenvolvido com ❤️ para designers criativos** 
+Desenvolvido com ❤️ para designers gráficos profissionais. 
